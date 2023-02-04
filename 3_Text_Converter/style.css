@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    
+
+}
+.container{
+    border: 10px solid rgb(85, 81, 81);
+    padding: 16px;
+    font-size: 24px;
+    text-transform: capitalize;
+    background-color: rgb(37, 36, 36);
+
+}
+.flow-content > * + *{
+margin-top: 2rem;
+}
+.split{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+label{
+    display: flex;
+    gap: 1rem;
+    text-transform: capitalize;
+    color: rgb(205, 202, 202);
+}
+
+textarea{
+    color: rgb(195, 189, 189);
+   font-size: 17px;
+   background-color: rgb(48, 46, 46);
+   border: 1px solid;
+   border-radius: 10px;
+   padding: 8px;
+  
+}
+p{
+    margin-bottom: 0.25rem;
+    color: rgb(205, 202, 202);  
+}
+textarea:focus{
+    outline: none;
+    border: 2px solid;
+    border-color: rgb(228, 99, 228);
+}
+input[type=radio]{
+    accent-color:rgb(228, 99, 228) ;
+}

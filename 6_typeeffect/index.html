@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: hsl(84, 90%, 10%);
+        }
+        .wrapper{
+            width: 50%;
+            margin: 2rem auto;
+        }
+        h1{
+            text-transform: capitalize;
+            color: hsl(84,80%,70%);
+            font-size: 3rem;
+        }
+        h3{
+            text-transform: capitalize;
+            color: hsl(84,60%,70%);
+            font-size: 2rem;
+        }
+        p{
+            color: hsl(84,40%,70%);
+            font-size: 1.25rem;
+        }
+        .hide{
+            opacity: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+    <h1 class="head" data-type-min="10", data-type-max="90">welcome to js world.</h1>
+    <h3 class="head" data-type-min="5", data-type-max="40">learn typewrite effect using sync await.  </h3>
+    <p class="head">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum reprehenderit sint quam amet totam, fugit sequi provident voluptatibus, fuga ipsam quod repudiandae a iusto quis. Id delectus iste maiores dolore.</p>
+    </div>
+    <script>
+        function wait(ms=0){
+            return new Promise(function(res){
+                return setTimeout(res,ms);
+            })
+        }
+        function getRandom(min=10, max=80,randomNum=Math.random()){
+            return Math.floor(randomNum * (max - min)+ min)
+        }
+        async function draw(el){
+            const text = el.textContent;
+            let result ="" ;
+            for (const letter of text){
+                result += letter;
+                el.textContent=result;
+                const {minVal,maxVal} =el.dataset;
+                const randomWait = getRandom(minVal,maxVal);
+                await wait(randomWait)
+            }
+
+        }
+        async function hideOne(el){
+            const wrapper = document.querySelector('.wrapper');
+            wrapper.classList.add('hide');
+            await wait(1000)
+            wrapper.classList.remove('hide');
+            draw(el)
+        }
+        
+        const headings = document.querySelectorAll('.head');
+        headings.forEach((el)=>{
+hideOne(el)
+        })
+         
+      
+    </script>
+</body>
+</html>
